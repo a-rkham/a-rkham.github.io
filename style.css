@@ -1,42 +1,50 @@
-/* Estilos Básicos e Reset */
+/* Estilos Cyberpunk Básicos */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Share Tech Mono', monospace; /* Fonte monoespaçada para o toque "terminal" */
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    /* Fundo escuro */
-    background-color: #121212; 
-    color: #E0E0E0; /* Texto claro */
+    background-color: #0A0A0A; /* Fundo muito escuro */
+    color: #00FF41; /* Texto verde neon padrão */
+    overflow-x: hidden; /* Evita scroll horizontal */
+    text-shadow: 0 0 5px #00FF41; /* Efeito de brilho neon */
 }
 
 .container {
-    width: 80%;
+    width: 85%;
     margin: auto;
     overflow: hidden;
+    padding: 20px 0;
 }
 
 a {
-    color: #4CAF50; /* Cor verde de destaque (Hacker Green) */
+    color: #FF00FF; /* Cor de link magenta neon */
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 a:hover {
-    color: #76FF03;
+    color: #00FFFF; /* Azul ciano neon no hover */
+    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF;
 }
 
-/* Header (Cabeçalho) */
-header {
-    background: #1F1F1F;
-    color: #ffffff;
+/* Efeito Glitch no Header (simulado com texto) */
+header.glitch {
+    background: #000000;
+    color: #FFF; /* Texto branco para contraste no glitch */
     padding-top: 20px;
-    min-height: 70px;
-    border-bottom: 3px solid #4CAF50;
+    min-height: 80px;
+    border-bottom: 3px solid #FF00FF; /* Borda magenta */
+    position: relative;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5); /* Sombra neon */
 }
 
-header h1 {
+header.glitch h1 {
     float: left;
     margin: 0;
+    font-family: 'Orbitron', sans-serif; /* Fonte futurista para títulos */
+    color: #00FF41; /* Verde neon para o título principal */
+    text-shadow: 0 0 8px #00FF41;
 }
 
 header nav {
@@ -56,155 +64,258 @@ header li {
 }
 
 header a {
-    color: #ffffff;
+    color: #FF00FF; /* Links de navegação magenta */
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 14px;
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
 }
 
-/* Hero Section (Sobre Mim) */
-.hero {
-    min-height: 400px;
-    background: #212121;
+/* Hero Section Cyberpunk */
+.hero-cyberpunk {
+    min-height: 500px;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://source.unsplash.com/random/1600x900?cyberpunk,city,night') no-repeat center center/cover;
     text-align: center;
-    padding: 100px 0;
+    padding: 120px 0;
+    position: relative;
+    border-bottom: 2px dashed #00FFFF; /* Borda tracejada ciano */
+}
+/* Efeito de grade neon no fundo (opcional, pode ser uma imagem PNG transparente) */
+.hero-cyberpunk::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: linear-gradient(to right, rgba(0,255,255,0.1) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: neonGridPulse 5s infinite alternate; /* Animação sutil da grade */
 }
 
-.hero h2 {
-    font-size: 40px;
+@keyframes neonGridPulse {
+    from { opacity: 0.1; }
+    to { opacity: 0.2; }
+}
+
+
+.hero-cyberpunk h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 50px;
     margin-bottom: 20px;
-    color: #4CAF50;
+    color: #00FFFF; /* Ciano neon para o título principal */
+    text-shadow: 0 0 15px #00FFFF, 0 0 30px rgba(0, 255, 255, 0.7);
 }
 
-.hero p {
-    font-size: 18px;
-    max-width: 700px;
-    margin: 0 auto 30px;
-}
-
-.btn {
+.glitch-text {
+    position: relative;
     display: inline-block;
-    background: #4CAF50;
+}
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text); /* Conteúdo do h2 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 #FF00FF;
+    animation: glitch-anim-1 2s infinite alternate-reverse;
+}
+.glitch-text::after {
+    left: -2px;
+    text-shadow: 2px 0 #00FF41;
+    animation: glitch-anim-2 2s infinite alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip: rect(20px, 9999px, 80px, 0); transform: skew(0.5deg); }
+    10% { clip: rect(100px, 9999px, 30px, 0); transform: skew(-1deg); }
+    20% { clip: rect(120px, 9999px, 90px, 0); transform: skew(0.8deg); }
+    /* ... adicione mais passos para um glitch mais complexo ... */
+    100% { clip: rect(50px, 9999px, 150px, 0); transform: skew(-0.3deg); }
+}
+@keyframes glitch-anim-2 {
+    0% { clip: rect(10px, 9999px, 100px, 0); transform: skew(-0.8deg); }
+    15% { clip: rect(60px, 9999px, 20px, 0); transform: skew(0.3deg); }
+    /* ... */
+    100% { clip: rect(100px, 9999px, 10px, 0); transform: skew(1deg); }
+}
+
+/* Cursor de terminal */
+.cursor {
+    animation: blink 1s infinite;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+.hero-cyberpunk p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #E0E0E0; /* Texto mais claro para a descrição */
+    text-shadow: none; /* Remove brilho do texto normal */
+}
+
+.btn-cyber {
+    display: inline-block;
+    background: linear-gradient(45deg, #00FF41, #FF00FF); /* Botão gradiente neon */
     color: #121212;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
-    transition: background 0.3s ease;
+    transition: all 0.4s ease;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.5), 0 0 15px rgba(255, 0, 255, 0.5);
 }
 
-.btn:hover {
-    background: #76FF03;
+.btn-cyber:hover {
+    background: linear-gradient(45deg, #FF00FF, #00FFFF);
+    color: #000;
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.8), 0 0 25px rgba(0, 255, 255, 0.8);
+    transform: scale(1.05);
 }
 
-/* Content Sections */
-.content-section {
-    padding: 60px 0;
+/* Content Sections Cyberpunk */
+.content-section-cyber {
+    padding: 80px 0;
     text-align: center;
+    border-bottom: 1px solid #1a1a1a;
+}
+.content-section-cyber:last-of-type {
+    border-bottom: none;
 }
 
-.content-section h2 {
-    margin-bottom: 40px;
-    font-size: 30px;
-    color: #E0E0E0;
-    border-bottom: 2px solid #333;
+.content-section-cyber h2 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 50px;
+    font-size: 35px;
+    color: #00FFFF; /* Ciano neon */
+    text-shadow: 0 0 10px #00FFFF;
     display: inline-block;
     padding-bottom: 10px;
+    border-bottom: 2px solid #FF00FF; /* Borda inferior magenta */
 }
 
-/* Habilidades Grid */
-.grid-habilidades {
+/* Habilidades Grid Cyberpunk */
+.grid-skills-cyber {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* Centraliza cards */
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
 }
 
-.habilidade-card {
-    background: #1F1F1F;
-    padding: 20px;
-    border-radius: 8px;
-    width: 45%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    border-left: 5px solid #4CAF50;
+.skill-card-cyber {
+    background: #1A1A1A;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px; /* Largura fixa para os cards */
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3); /* Sombra neon verde */
+    border: 1px solid rgba(0, 255, 65, 0.5);
     text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card-cyber:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 255, 65, 0.7);
 }
 
-.habilidade-card h3 {
-    color: #4CAF50;
+
+.skill-card-cyber h3 {
+    color: #00FF41; /* Títulos das habilidades em verde neon */
     margin-top: 0;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 8px #00FF41;
 }
 
-/* Projetos */
-.projects-section {
-    background: #181818;
+.skill-card-cyber p {
+    color: #D0D0D0;
+    text-shadow: none;
 }
 
-.projeto-card {
-    background: #212121;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+/* Projetos Cyberpunk */
+.projects-cyber-section {
+    background: #000000;
+}
+
+.project-card-cyber {
+    background: #1A1A1A;
+    padding: 30px;
+    margin: 30px auto; /* Centraliza cards */
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(255, 0, 255, 0.3); /* Sombra magenta */
+    border: 1px solid rgba(255, 0, 255, 0.5);
     text-align: left;
+    max-width: 800px; /* Limita largura dos cards de projeto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card-cyber:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
 }
 
-.projeto-card h3 {
+.project-card-cyber h3 {
+    color: #00FFFF; /* Títulos dos projetos em ciano neon */
+    margin-bottom: 15px;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 8px #00FFFF;
+}
+
+.project-card-cyber p {
     color: #E0E0E0;
-    margin-bottom: 10px;
+    text-shadow: none;
 }
 
-.project-link {
+.project-link-cyber {
     background: #333;
-    color: #E0E0E0;
-    padding: 5px 10px;
-    border-radius: 3px;
+    color: #00FF41; /* Link do projeto em verde neon */
+    padding: 8px 15px;
+    border-radius: 5px;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 15px;
     display: inline-block;
+    border: 1px solid #00FF41;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
-.project-link:hover {
-    background: #4CAF50;
-    color: #121212;
+.project-link-cyber:hover {
+    background: #00FF41;
+    color: #000;
+    border-color: #00FFFF;
+    text-shadow: none;
 }
 
-/* Footer (Rodapé) */
+/* Footer Cyberpunk */
 footer {
-    background: #1F1F1F;
-    color: #ffffff;
+    background: #000000;
+    color: #00FFFF; /* Texto do footer em ciano */
     text-align: center;
-    padding: 30px 0;
-    margin-top: 20px;
+    padding: 40px 0;
+    margin-top: 30px;
+    border-top: 3px solid #00FFFF; /* Borda superior ciano */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    font-size: 14px;
 }
 
-.social-links a {
-    color: #ffffff;
-    margin: 0 10px;
-    font-size: 20px;
+.social-links-cyber a {
+    color: #FF00FF; /* Links sociais em magenta */
+    margin: 0 15px;
+    font-size: 22px;
+    text-shadow: 0 0 8px rgba(255, 0, 255, 0.7);
 }
 
-.social-links a:hover {
-    color: #4CAF50;
+.social-links-cyber a:hover {
+    color: #00FF41; /* Verde neon no hover */
+    text-shadow: 0 0 15px #00FF41;
 }
 
-/* Responsividade Básica */
-@media (max-width: 768px) {
+/* Responsividade Básica Cyberpunk */
+@media (max-width: 900px) {
     .container {
-        width: 95%;
+        width: 90%;
     }
 
-    header h1, header nav, header li {
-        float: none;
-        text-align: center;
-        width: 100%;
-    }
-
-    header li {
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    .grid-habilidades .habilidade-card {
-        width: 100%;
-    }
-}
+    header h1 {
