@@ -3,26 +3,35 @@
 
 @import "jekyll-theme-minimal";
 
-// Alargar o container principal
+// 1. Alarga o container principal
 .wrapper {
-  max-width: 900px; // Aumenta de 640px para 900px
+  max-width: 1000px; 
   margin: 0 auto;
 }
 
-// Ajustar a seção de conteúdo para ocupar o espaço extra
-section {
-  width: calc(100% - 250px); // Ajusta o conteúdo em relação à barra lateral
-}
-
-// Se você centralizou o título antes, mantenha aqui:
+// 2. Trava a largura da barra lateral (onde fica o perfil/config)
 header {
-  // text-align: center; 
+  width: 240px;
+  float: left;
+  position: sticky; // Opcional: faz o perfil seguir a rolagem da página
+  top: 20px;
 }
 
-// Melhora a visualização em telas muito grandes
-@media screen and (max-width: 900px) {
-  section, header {
+// 3. Define a largura do conteúdo para não invadir o lado
+section {
+  width: 680px; // 1000px total - 240px da lateral - 80px de margem de segurança
+  float: right;
+  padding-left: 40px;
+}
+
+// 4. Garante que em celulares o site continue funcionando (responsividade)
+@media screen and (max-width: 770px) {
+  .wrapper {
+    width: 90% !important;
+  }
+  header, section {
     float: none;
     width: 100%;
+    padding-left: 0;
   }
 }
