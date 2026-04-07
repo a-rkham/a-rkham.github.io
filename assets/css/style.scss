@@ -3,35 +3,49 @@
 
 @import "jekyll-theme-minimal";
 
-// 1. Alarga o container principal
+// 1. Aumentamos o espaço total
 .wrapper {
-  max-width: 1000px; 
+  max-width: 1100px; 
   margin: 0 auto;
+  padding: 0 20px;
 }
 
-// 2. Trava a largura da barra lateral (onde fica o perfil/config)
+// 2. Forçamos o perfil para a extrema esquerda
 header {
-  width: 240px;
+  width: 220px;
   float: left;
-  position: sticky; // Opcional: faz o perfil seguir a rolagem da página
-  top: 20px;
+  margin-left: -40px; // Puxa o perfil para fora, mais para a esquerda
+  padding: 20px 0;
+  text-align: left;
 }
 
-// 3. Define a largura do conteúdo para não invadir o lado
+// 3. Empurramos o conteúdo para a direita com margem fixa
 section {
-  width: 680px; // 1000px total - 240px da lateral - 80px de margem de segurança
+  width: 750px; 
   float: right;
-  padding-left: 40px;
+  margin-right: 20px;
+  padding-left: 60px; // Cria um "muro" de separação entre o perfil e o texto
+  border-left: 1px solid #eee; // Opcional: uma linha fina para separar
 }
 
-// 4. Garante que em celulares o site continue funcionando (responsividade)
-@media screen and (max-width: 770px) {
-  .wrapper {
-    width: 90% !important;
-  }
+// 4. Limpeza de floats (importante para o rodapé não subir)
+footer {
+  clear: both;
+  width: 100%;
+  padding: 20px 0;
+}
+
+// 5. Ajuste para telas menores (Tablets e Celulares)
+@media screen and (max-width: 900px) {
   header, section {
     float: none;
     width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 0;
+    border-left: none;
+  }
+  .wrapper {
+    width: 90%;
   }
 }
