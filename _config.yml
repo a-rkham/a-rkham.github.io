@@ -1,11 +1,14 @@
 title: arkham notes
 github_username: a-rkham
 logo: /assets/img/logo.png
-description: Anotações sobre hacking e segurança.
+description: "<br>Anotações sobre hacking e segurança."
 show_downloads: false
 lang: pt-BR
 google_analytics:
 theme: jekyll-theme-minimal
+kramdown:
+  parse_block_html: true
+  toc_levels: 1..3
 exclude:
   - Gemfile
   - Gemfile.lock
